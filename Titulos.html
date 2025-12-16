@@ -101,10 +101,10 @@
                             <li class="bullet-list-item">
                                 <h3 class="text-white mb-3 add-letter-space">Bachillerato en Ingeniería en Sistemas</h3>
                                 <p style="text-align: justify;">
-                                    Universidad Fidélitas - 2024 en proceso. Actualmente cursando el 30% de la carrera de Ingeniería en Sistemas de Computación.
+                                    Universidad Fidélitas - 2026 en proceso. Actualmente cursando el 50% de la carrera de Ingeniería en Sistemas de Computación.
                                 </p>
                                 <button type="button" class="btn btn-primary mt-3" id="btnVerTitulo">
-                                    <i class="fas fa-certificate mr-2"></i> Título
+                                    Título
                                 </button>
                             </li>
                         </ul> <br>
@@ -115,6 +115,9 @@
                                 <p style="text-align: justify;">
                                     Universidad San José - Finalizado en 2022. Formación técnica especializada en desarrollo de software.
                                 </p>
+                                <button type="button" class="btn btn-primary mt-3" id="btnVerTitulo2">
+                                    Título
+                                </button>
                             </li>
                         </ul>
 
@@ -123,21 +126,27 @@
 
                         <ul class="list-unstyled">
                             <li class="bullet-list-item">
-                                <h3 class="text-white mb-3 add-letter-space">CCNA1</h3>
+                                <h3 class="text-white mb-3 add-letter-space">CCNAv7: Introduction to Networks</h3>
                                 <p style="text-align: justify;">
                                     Certificado obtenido a través de Networking Academy que avala conocimientos básicos en redes de computadoras,
                                     fundamentos de networking y conceptos esenciales de Cisco.
                                 </p>
+                                <button type="button" class="btn btn-primary mt-3" id="btnVerCertificado1">
+                                    Certificado
+                                </button>
                             </li>
                         </ul> <br>
 
                         <ul class="list-unstyled">
                             <li class="bullet-list-item">
-                                <h3 class="text-white mb-3 add-letter-space">CCNA2</h3>
+                                <h3 class="text-white mb-3 add-letter-space">Introduction to Cibersecurity</h3>
                                 <p style="text-align: justify;">
-                                    Certificado obtenido a través de Networking Academy que avala conocimientos avanzados en redes de computadoras,
-                                    incluyendo routing, switching y configuración de routers y switches.
+                                    Certificado obtenido a través de Networking Academy que avala conocimientos en ciberseguridad,
+                                    fundamentos de seguridad informática y protección de sistemas y redes.
                                 </p>
+                                <button type="button" class="btn btn-primary mt-3" id="btnVerCertificado2">
+                                    Certificado
+                                </button>
                             </li>
                         </ul> <br>
 
@@ -154,7 +163,7 @@
     <div id="tituloModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0, 0, 0, 0.75); align-items: center; justify-content: center;">
         <div style="background-color: #2a2a2a; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); max-width: 800px; width: 90%; max-height: 85vh; position: relative; overflow: auto; margin: auto;">
             <div style="border-bottom: 1px solid #444; padding: 15px 20px; background-color: #2a2a2a; display: flex; justify-content: space-between; align-items: center;">
-                <h5 style="color: #ffffff; font-size: 18px; font-weight: 500; margin: 0;">
+                <h5 id="modalTitulo" style="color: #ffffff; font-size: 18px; font-weight: 500; margin: 0;">
                     Título del Bachiller
                 </h5>
                 <button type="button" id="cerrarModal" style="background: none; border: none; color: #ffffff; font-size: 28px; cursor: pointer; opacity: 0.8; padding: 0; margin: 0; line-height: 1;">
@@ -162,7 +171,7 @@
                 </button>
             </div>
             <div style="padding: 20px; background-color: #2a2a2a; text-align: center;">
-                <img src="./Titulos_files/Denominacion2.jpg" alt="Título Bachillerato en Ingeniería en Sistemas" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                <img id="modalImagen" src="./Titulos_files/Denominacion2.jpg" alt="Título" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
             </div>
         </div>
     </div>
@@ -212,41 +221,80 @@
 
         // Función para abrir el modal del título
         const btnVerTitulo = document.getElementById("btnVerTitulo");
+        const btnVerTitulo2 = document.getElementById("btnVerTitulo2");
         const modalTitulo = document.getElementById("tituloModal");
+        const modalImagen = document.getElementById("modalImagen");
+        const modalTituloTexto = document.getElementById("modalTitulo");
         const cerrarModal = document.getElementById("cerrarModal");
         
+        // Función para abrir el modal con una imagen y título específicos
+        function abrirModal(imagenSrc, tituloTexto, altTexto) {
+            modalImagen.src = imagenSrc;
+            modalImagen.alt = altTexto;
+            modalTituloTexto.textContent = tituloTexto;
+            modalTitulo.style.display = "flex";
+            document.body.style.overflow = "hidden";
+        }
+
         if (btnVerTitulo && modalTitulo) {
-            // Abrir modal al hacer click en el botón
+            // Abrir modal al hacer click en el primer botón
             btnVerTitulo.addEventListener("click", function(e) {
                 e.preventDefault();
-                modalTitulo.style.display = "flex";
-                document.body.style.overflow = "hidden";
+                abrirModal("./Titulos_files/Denominacion2.jpg", "Título del Bachiller", "Título Bachillerato en Ingeniería en Sistemas");
             });
+        }
 
-            // Cerrar modal al hacer click en el botón X
-            if (cerrarModal) {
-                cerrarModal.addEventListener("click", function() {
-                    modalTitulo.style.display = "none";
-                    document.body.style.overflow = "";
-                });
-            }
+        if (btnVerTitulo2 && modalTitulo) {
+            // Abrir modal al hacer click en el segundo botón
+            btnVerTitulo2.addEventListener("click", function(e) {
+                e.preventDefault();
+                abrirModal("./Titulos_files/Denominacion1.jpg", "Título Técnico Medio", "Título Técnico Medio en Desarrollo de Software");
+            });
+        }
 
-            // Cerrar modal al hacer click fuera del contenido
+        const btnVerCertificado1 = document.getElementById("btnVerCertificado1");
+        if (btnVerCertificado1 && modalTitulo) {
+            // Abrir modal al hacer click en el botón de certificado
+            btnVerCertificado1.addEventListener("click", function(e) {
+                e.preventDefault();
+                abrirModal("./Titulos_files/Denominacion3.jpg", "Certificado CCNAv7", "Certificado CCNAv7: Introduction to Networks");
+            });
+        }
+
+        const btnVerCertificado2 = document.getElementById("btnVerCertificado2");
+        if (btnVerCertificado2 && modalTitulo) {
+            // Abrir modal al hacer click en el botón de certificado
+            btnVerCertificado2.addEventListener("click", function(e) {
+                e.preventDefault();
+                abrirModal("./Titulos_files/Denominacion4.jpg", "Certificado Introduction to Cibersecurity", "Certificado Introduction to Cibersecurity");
+            });
+        }
+
+        // Cerrar modal al hacer click en el botón X
+        if (cerrarModal) {
+            cerrarModal.addEventListener("click", function() {
+                modalTitulo.style.display = "none";
+                document.body.style.overflow = "";
+            });
+        }
+
+        // Cerrar modal al hacer click fuera del contenido
+        if (modalTitulo) {
             modalTitulo.addEventListener("click", function(e) {
                 if (e.target === modalTitulo) {
                     modalTitulo.style.display = "none";
                     document.body.style.overflow = "";
                 }
             });
-
-            // Cerrar modal con la tecla ESC
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && modalTitulo.style.display === "flex") {
-                    modalTitulo.style.display = "none";
-                    document.body.style.overflow = "";
-                }
-            });
         }
+
+        // Cerrar modal con la tecla ESC
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && modalTitulo && modalTitulo.style.display === "flex") {
+                modalTitulo.style.display = "none";
+                document.body.style.overflow = "";
+            }
+        });
 
     </script>
 
