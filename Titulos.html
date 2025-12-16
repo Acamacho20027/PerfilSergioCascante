@@ -103,6 +103,9 @@
                                 <p style="text-align: justify;">
                                     Universidad Fidélitas - 2024 en proceso. Actualmente cursando el 30% de la carrera de Ingeniería en Sistemas de Computación.
                                 </p>
+                                <button type="button" class="btn btn-primary mt-3" id="btnVerTitulo">
+                                    <i class="fas fa-certificate mr-2"></i> Título
+                                </button>
                             </li>
                         </ul> <br>
 
@@ -117,16 +120,6 @@
 
                         
                         <h2 class="text-white add-letter-space my-5" style="text-align: center;">Certificados</h2>
-
-                        <ul class="list-unstyled">
-                            <li class="bullet-list-item">
-                                <h3 class="text-white mb-3 add-letter-space">Scrum Foundation Professional Certification (SFPC)</h3>
-                                <p style="text-align: justify;">
-                                    Certificado obtenido en la Universidad Fidélitas que respalda conocimientos en metodologías ágiles Scrum,
-                                    incluyendo roles, eventos y artefactos, con habilidades para gestionar proyectos de manera eficiente y colaborativa.
-                                </p>
-                            </li>
-                        </ul> <br>
 
                         <ul class="list-unstyled">
                             <li class="bullet-list-item">
@@ -157,6 +150,37 @@
 
     <div id="contenedorImagen" style="margin-top: 20px;"></div>
 
+    <!-- Modal para mostrar el título -->
+    <div id="tituloModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0, 0, 0, 0.75); align-items: center; justify-content: center;">
+        <div style="background-color: #2a2a2a; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); max-width: 800px; width: 90%; max-height: 85vh; position: relative; overflow: auto; margin: auto;">
+            <div style="border-bottom: 1px solid #444; padding: 15px 20px; background-color: #2a2a2a; display: flex; justify-content: space-between; align-items: center;">
+                <h5 style="color: #ffffff; font-size: 18px; font-weight: 500; margin: 0;">
+                    Título del Bachiller
+                </h5>
+                <button type="button" id="cerrarModal" style="background: none; border: none; color: #ffffff; font-size: 28px; cursor: pointer; opacity: 0.8; padding: 0; margin: 0; line-height: 1;">
+                    &times;
+                </button>
+            </div>
+            <div style="padding: 20px; background-color: #2a2a2a; text-align: center;">
+                <img src="./Titulos_files/Denominacion2.jpg" alt="Título Bachillerato en Ingeniería en Sistemas" style="max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+            </div>
+        </div>
+    </div>
+    
+    <!-- Estilos adicionales para el modal -->
+    <style>
+        #tituloModal {
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        #cerrarModal:hover {
+            opacity: 1 !important;
+        }
+    </style>
+
     <!-- Botón para ir arriba -->
     <button id="btnUp" title="Ir arriba">
         <i class="fas fa-rocket"></i>
@@ -185,6 +209,45 @@
                 behavior: "smooth"
             });
         });
+
+        // Función para abrir el modal del título
+        const btnVerTitulo = document.getElementById("btnVerTitulo");
+        const modalTitulo = document.getElementById("tituloModal");
+        const cerrarModal = document.getElementById("cerrarModal");
+        
+        if (btnVerTitulo && modalTitulo) {
+            // Abrir modal al hacer click en el botón
+            btnVerTitulo.addEventListener("click", function(e) {
+                e.preventDefault();
+                modalTitulo.style.display = "flex";
+                document.body.style.overflow = "hidden";
+            });
+
+            // Cerrar modal al hacer click en el botón X
+            if (cerrarModal) {
+                cerrarModal.addEventListener("click", function() {
+                    modalTitulo.style.display = "none";
+                    document.body.style.overflow = "";
+                });
+            }
+
+            // Cerrar modal al hacer click fuera del contenido
+            modalTitulo.addEventListener("click", function(e) {
+                if (e.target === modalTitulo) {
+                    modalTitulo.style.display = "none";
+                    document.body.style.overflow = "";
+                }
+            });
+
+            // Cerrar modal con la tecla ESC
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && modalTitulo.style.display === "flex") {
+                    modalTitulo.style.display = "none";
+                    document.body.style.overflow = "";
+                }
+            });
+        }
+
     </script>
 
     </div>
@@ -192,8 +255,5 @@
     <script src="./Titulos_files/jquery-3.4.1.js.descarga"></script>
 
     <script src="./Titulos_files/bootstrap.js.descarga"></script>
-
-    
-
 
 </body></html>
