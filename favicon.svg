@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <clipPath id="topHalf">
+      <rect x="0" y="0" width="100" height="50"/>
+    </clipPath>
+    <clipPath id="bottomHalf">
+      <rect x="0" y="50" width="100" height="50"/>
+    </clipPath>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Letra S moderna y elegante - tamaño aumentado para igualar otros favicons -->
+  <text x="50" y="88" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="110" font-weight="900" text-anchor="middle" fill="white" clip-path="url(#topHalf)" filter="url(#glow)">S</text>
+  <text x="50" y="88" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="110" font-weight="900" text-anchor="middle" fill="#2196F3" clip-path="url(#bottomHalf)" filter="url(#glow)">S</text>
+</svg>
